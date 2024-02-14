@@ -1,51 +1,43 @@
-package com.example.timepicker;
+package com.example.registration2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.TimeZone;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView time;
-    private Button vt;
+    private Button button1;
+    private EditText ea;
+    private EditText eb;
+    private EditText ec;
+    private EditText ed;
+    private TextView ta;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        time=findViewById(R.id.time);
-        vt=findViewById(R.id.vt);
-        vt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int hours=calendar.get(Calendar.HOUR_OF_DAY);
-                int min=calendar.get(Calendar.MINUTE);
-                TimePickerDialog timePickerDialog = new TimePickerDialog(MainActivity.this, com.google.android.material.R.style.Theme_AppCompat_Dialog, new TimePickerDialog.OnTimeSetListener() {
+
+                button1=findViewById(R.id.button1);
+                ea=findViewById(R.id.ea);
+                eb=findViewById(R.id.eb);
+                ec=findViewById(R.id.ec);
+                ed=findViewById(R.id.ed);
+                ta=findViewById(R.id.ta);
+                button1.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        Calendar c = Calendar.getInstance();
-                        c.set(Calendar.HOUR_OF_DAY,hourOfDay);
-                        c.set(Calendar.MINUTE,minute);
-                        c.setTimeZone(TimeZone.getDefault());
-                        SimpleDateFormat format = new SimpleDateFormat("k:mm a");
-                        String tim = format.format(c.getTime());
-                        time.setText(tim);
-
-
+                    public void onClick(View v) {
+                        Toast.makeText(MainActivity.this, "Student Registered Successfully", Toast.LENGTH_SHORT).show();
                     }
-                },hours,min,false);
-                timePickerDialog.show();
-
+      });
             }
-        });
+        }
+
     }
+
 }
